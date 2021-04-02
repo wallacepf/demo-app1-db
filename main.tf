@@ -42,8 +42,8 @@ module "db" {
   max_allocated_storage = 100
 
   name     = "mydb"
-  username = "postgres"
-  password = "mysafepwd"
+  username = var.db_username
+  password = var.db_pwd
   port     = 5432
 
   maintenance_window      = "Mon:00:00-Mon:03:00"
