@@ -1,5 +1,9 @@
 variable "common_tags" {
   type = map(string)
+  default = {
+    "Description" : "DB Tier",
+    "Owner" : "DB Team"
+  }
 }
 
 variable "aws_region" {
@@ -15,11 +19,11 @@ variable "db_name" {
 }
 
 variable "db_username" {
-  type      = string
-  sensitive = true
+  type = string
+
 }
 
 variable "db_pwd" {
-  type      = string
-  sensitive = true
+  type = string
+
 }

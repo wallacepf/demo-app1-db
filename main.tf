@@ -7,12 +7,11 @@ terraform {
 }
 
 data "terraform_remote_state" "vpc" {
-  backend  = "remote"
-  hostname = "app.terraform.io"
+  backend = "remote"
   config = {
     organization = "myterraformcloud"
     workspaces = {
-      name = "app1-network"
+      name = "demo-app1-nw"
     }
   }
 }
@@ -52,7 +51,7 @@ module "db" {
   skip_final_snapshot     = true
   deletion_protection     = false
 
-  subnet_ids             = data.terraform_remote_state.vpc.outputs.subnets
+  subnet_ids             = data.terraform_remote_state.vpc.outputs.private_subnets
   vpc_security_group_ids = [data.terraform_remote_state.vpc.outputs.db_security_group_id]
 
 }
